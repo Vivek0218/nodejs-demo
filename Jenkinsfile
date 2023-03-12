@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t vivekpadale18/devops:$BUILD_NUMBER .'       #### This will create new docker repo, else we can specify existing repo
+                sh 'docker build -t vivekpadale18/devops:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -25,11 +25,11 @@ pipeline {
                 sh 'docker push vivekpadale18/devops:$BUILD_NUMBER'
             }
         }
-}
+
+    }
 post {
         always {
             sh 'docker logout'
         }
     }
 }
-
